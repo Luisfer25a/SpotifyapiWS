@@ -13,7 +13,7 @@ const app = express();
 
 
 app.listen(10000, () => {
- console.log("El servidor está inicializado en el puerto 3000");
+ console.log("El servidor está inicializado en el puerto 10000");
 });
 
 var client_id = 'fb296c0ee46b4fe9b59eda55c233e6df'; // id de cliente
@@ -41,14 +41,15 @@ request.post(authOptions, function(error, response, body) {
     // use the access token to access the Spotify Web API
     var token = body.access_token;
     var options = {
-      url: 'https://api.spotify.com/v1/recommendations?seed_artists=4NHQUGzhtTLFvgF5SZesLK&seed_tracks=0c6xIDDpzE81m2q797ordA&target_danceability='+dnc+'&target_popularity=50&target_valence='+val+'&target_energy='+ener+'&target_energy='+acous+'&limit=1&market=US',
+      url: 'https://api.spotify.com/v1/recommendations?seed_artists=66CXWjxzNUsdJxJ2JdwvnR,06HL4z0CvFAxyc27GXpf02,3TVXtAsR1Inumwj472S9r4&seed_tracks=3e9HZxeyfWwjeyPAMmWSSQ,0wwPcA6wtMf6HUMpIRdeP7&max_danceability='+dnc+'&target_popularity=90&max_valence='+val+'&max_energy='+ener+'&max_acousticness='+acous+'&limit=1&market=US',
       headers: {
         'Authorization': 'Bearer ' + token
       },
       json: true
     };
     request.get(options, function(error, response, body) {
-      res.send(body);
+      
+	  res.send(body);
 	  
     });
   }
